@@ -21,7 +21,7 @@ const ProductScreen = ({ history, match }) => {
     (state) => state.productDetails
   );
 
-  const [qty, setQty] = useState(0);
+  const [qty, setQty] = useState(1);
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
