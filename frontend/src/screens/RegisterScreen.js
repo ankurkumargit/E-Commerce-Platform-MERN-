@@ -14,7 +14,7 @@ const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
   const [message, setMessage] = useState(null);
 
-  const redirect = location.search ? location.search.split('?')[1] : '/';
+  const redirect = location.search ? location.search.split('=')[1] : '/';
 
   const dispatch = useDispatch();
 
@@ -43,7 +43,7 @@ const RegisterScreen = ({ location, history }) => {
         <Form.Group controlId='name'>
           <Form.Label>Name</Form.Label>
           <Form.Control
-            type='name'
+            type='text'
             placeholder='Enter name'
             value={name}
             onChange={(e) => setName(e.target.value)}
