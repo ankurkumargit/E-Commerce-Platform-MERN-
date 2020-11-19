@@ -17,13 +17,16 @@ const LoginScreen = ({ location, history }) => {
   const { loading, error, userInfo } = userLogin;
   useEffect(() => {
     if (userInfo) {
+      console.log(redirect);
       history.push(redirect);
     }
   }, [history, userInfo, redirect]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
+
   return (
     <FormContainer>
       <h1>Sign In</h1>
