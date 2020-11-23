@@ -58,10 +58,9 @@ const OrderScreen = ({ match, history }) => {
     } else if (!userInfo) {
       history.push('/login');
     }
-  }, [dispatch, order, orderId, successPay]);
+  }, [dispatch, order, orderId, successPay, history, userInfo]);
 
   const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
     dispatch(payOrder(orderId, paymentResult));
   };
 
