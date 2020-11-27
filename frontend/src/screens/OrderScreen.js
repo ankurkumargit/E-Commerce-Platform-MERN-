@@ -133,7 +133,7 @@ const OrderScreen = ({ match, history }) => {
               </p>
               {order.isDelivered ? (
                 <Message variant='success'>
-                  Delivered on {order.deliveredAt}
+                  Delivered on {order.deliveredAt.substring(0, 10)}
                 </Message>
               ) : (
                 <Message variant='danger'>Not Delivered</Message>

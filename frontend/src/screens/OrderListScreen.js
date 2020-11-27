@@ -20,7 +20,7 @@ const OrderListScreen = ({ history }) => {
     } else {
       history.push('/');
     }
-  }, [dispatch, history, userInfo, orders]);
+  }, [dispatch, history, userInfo]);
 
   return (
     <>
