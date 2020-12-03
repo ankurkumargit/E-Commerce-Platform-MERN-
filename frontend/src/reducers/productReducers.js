@@ -62,7 +62,7 @@ export const productDetailsReducer = (
 export const productDeleteReducer = (state = {}, action) => {
   switch (action.type) {
     case PRODUCT_DELETE_REQUEST:
-      return { loading: true, ...state };
+      return { loading: true };
     case PRODUCT_DELETE_SUCCESS:
       return { loading: false, success: true };
     case PRODUCT_DELETE_FAIL:
@@ -120,7 +120,7 @@ export const productReviewCreateReducer = (state = {}, action) => {
 export const productTopRatedReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case PRODUCT_TOP_REQUEST:
-      return { loading: true };
+      return { loading: true, products: [] };
     case PRODUCT_TOP_SUCCESS:
       return { loading: false, products: action.payload };
     case PRODUCT_TOP_FAIL:

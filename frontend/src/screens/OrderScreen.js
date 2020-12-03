@@ -71,14 +71,11 @@ const OrderScreen = ({ match, history }) => {
       };
       document.body.appendChild(script);
     };
-    if (
-      userInfo &&
-      (!order || order._id !== orderId || successPay || successDelivered)
-    ) {
+    if (!order || order._id !== orderId || successPay || successDelivered) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch({ type: ORDER_DELIVERED_RESET });
       dispatch(getOrderDetails(orderId));
-    } else if (userInfo && !order.isPaid) {
+    } else if (!order.isPaid) {
       if (!window.paypal) {
         addPaypalScript();
       } else {
@@ -87,15 +84,7 @@ const OrderScreen = ({ match, history }) => {
     } else if (!userInfo) {
       history.push('/login');
     }
-  }, [
-    dispatch,
-    order,
-    orderId,
-    successPay,
-    history,
-    userInfo,
-    successDelivered,
-  ]);
+  }, [dispatch, orderId, successPay, successDelivered, order]);
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult));
@@ -108,7 +97,7 @@ const OrderScreen = ({ match, history }) => {
   return loading ? (
     <Loader />
   ) : error ? (
-    <Message variant='error'>{error}</Message>
+    <Message variant='danger'>{error}</Message>
   ) : (
     <>
       <h1>Order {order._id}</h1>
